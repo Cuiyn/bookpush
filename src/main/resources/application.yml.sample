@@ -1,0 +1,23 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: your_database_url
+    username: your_user_name
+    password: your_password
+  jpa:
+    hibernate:
+      ddl-auto: update
+  mvc:
+    static-path-pattern: /static/**
+  thymeleaf:
+    cache: false
+site:
+  name: 书推
+  pushLimit: 5
+  bookDir: your_book_dir
+  email:
+    address: your_address
+    password: your_password
+    server: your_smtp_server
+    serverPort: your_smtp_server_port
