@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <!--/*@thymesVar id="siteName" type=""*/-->
-    <title th:text="|${siteName} - 用户信息|">用户信息</title>
+    <title th:text="|${siteName} - 图书推送|">图书推送</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1">
@@ -79,7 +79,7 @@
     <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
         <ul class="am-nav am-nav-pills am-topbar-nav">
             <li><a href="/">首页</a></li>
-            <li class="am-active"><a href="/account" th:text="${user.userName}">{{ name }}</a></li>
+            <li class="am-active"><a href="/account" th:text="${userName}">{{ name }}</a></li>
             <li><a href="/logout">登出</a></li>
         </ul>
     </div>
@@ -87,17 +87,12 @@
 
 <div class="am-g am-g-fixed blog-g-fixed">
     <div class="am-u-md-8">
-        <h4 class="am-article-meta blog-meta" th:text="|${user.userName}，欢迎使用！|">欢迎使用</h4>
+        <h4 class="am-article-meta blog-meta" th:text="|${userName}，欢迎使用！|">欢迎使用</h4>
         <article class="blog-main">
             <h3 class="am-article-title blog-title">
-                用户信息
+                图书推送
             </h3>
-            <h4 th:text="|用户名：${user.userName}|">用户名</h4>
-            <h4 th:text="|推送邮箱：${user.pushEmail}|">推送邮箱</h4>
-            <h4 th:text="|剩余推送次数：${user.pushLimit}|">剩余推送次数</h4>
-            <h4 th:text="|最近一次签到：${user.checkinDate}|">最近一次签到日期</h4>
-            <h4>若您的推送次数不够使用，请<a href="#" onclick="checkin()">现在签到</a>。</h4>
-            <h4 th:text="|签到后推送次数将会变为${pushLimit}，每天可签到1次。|">签到说明</h4>
+            <h4 th:text="${result}">推送结果</h4>
         </article>
     </div>
 </div>
@@ -120,14 +115,6 @@
 <!--<![endif]-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/amazeui/2.7.2/js/amazeui.min.js"></script>
 
-<script language="JavaScript">
-    function checkin() {
-        $.get('/checkin', function(data) {
-            alert(data);
-            location.reload();
-        });
-    }
-</script>
 
 </body>
 </html>

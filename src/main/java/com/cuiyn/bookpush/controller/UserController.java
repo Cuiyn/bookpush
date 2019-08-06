@@ -122,6 +122,7 @@ public class UserController {
             if (checkinDate == null) {
                 user.setPushLimit(siteConfig.getPushLimit());
                 user.setCheckinDate(now);
+                userRepository.save(user);
                 return "签到成功！";
             }
             if (isSameDay(checkinDate, now)) {
@@ -129,6 +130,7 @@ public class UserController {
             } else {
                 user.setPushLimit(siteConfig.getPushLimit());
                 user.setCheckinDate(now);
+                userRepository.save(user);
                 return "签到成功！";
             }
         }

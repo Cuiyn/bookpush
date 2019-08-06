@@ -37,6 +37,7 @@ public class FileController {
         String URISplit[] = fileURI.split("/");
         String bookName = URISplit[URISplit.length - 1];
         model.addAttribute("bookName", bookName);
+        model.addAttribute("file", fileURI);
 
         Integer userId = (Integer) session.getAttribute("userId");
         Optional<User> user = userRepository.findById(userId);

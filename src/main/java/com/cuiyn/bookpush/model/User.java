@@ -1,8 +1,6 @@
 package com.cuiyn.bookpush.model;
 
-import com.cuiyn.bookpush.config.SiteConfig;
 import com.cuiyn.bookpush.tools.BCryptPasswordEncoder;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.io.Serializable;
