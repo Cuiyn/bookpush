@@ -8,6 +8,7 @@ public class SiteConfig {
     private String name;
     private Integer pushLimit;
     private String bookDir;
+    private String registerCode;
 
     public String getName() {
         return name;
@@ -31,5 +32,13 @@ public class SiteConfig {
 
     public void setBookDir(String bookDir) {
         this.bookDir = bookDir;
+    }
+
+    public String getRegisterCode() {
+        return registerCode;
+    }
+
+    public void setRegisterCode(String registerCode) {
+        this.registerCode = registerCode;
     }
 }

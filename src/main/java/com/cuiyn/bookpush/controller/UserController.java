@@ -38,6 +38,10 @@ public class UserController {
             model.addAttribute("error", "注册成功！");
         } else if (code.equals("3")) {
             model.addAttribute("error", "请先登录");
+        } else if (code.equals("4")) {
+            model.addAttribute("error", "注册失败：注册码错误");
+        } else if (code.equals("5")) {
+            model.addAttribute("error", "注册失败：推送邮箱已注册，请勿重复注册");
         }
         model.addAttribute("siteName", siteConfig.getName());
         return "login.html";
@@ -74,12 +78,19 @@ public class UserController {
 
     @RequestMapping(value = "/register_result", method = RequestMethod.POST)
     public String register_result(@RequestParam String userName,
-                           @RequestParam String password,
-                           @RequestParam String pushEmail) {
-        Integer pushLimit = siteConfig.getPushLimit();
-        User user = new User(userName, password, pushEmail, pushLimit);
-        userRepository.save(user);
-        return "redirect:/login?code=2";
+                                  @RequestParam String password,
+                                  @RequestParam String pushEmail,
+                                  @RequestParam String registerCode) {
+        List<User> users = userRepository.findByPushEmail(pushEmail);
+        if (users.size() != 0)
+            return "redirect:/login?code=5";
+        if (registerCode.equals(siteConfig.getRegisterCode())) {
+            Integer pushLimit = siteConfig.getPushLimit();
+            User user = new User(userName, password, pushEmail, pushLimit);
+            userRepository.save(user);
+            return "redirect:/login?code=2";
+        } else
+            return "redirect:/login?code=4";
     }
 
     @RequestMapping(value = "/logout")

@@ -99,11 +99,10 @@
                 <h3 class="am-article-title blog-title">
                     图书详情
                 </h3>
-                <h4>您选择的文件是：</h4>
-                <h4 th:text="${bookName}">{{ url }}</h4>
-                <h4>即将推送的邮箱：</h4>
-                <h4 th:text="${pushEmail}">{{ email }}</h4>
-                <h4><a th:href="|/send/?file=${file}&name=${bookName}|" onclick="toggle()">发送</a></h4>
+                <h4 th:text="|您选择的图书是：${bookName}|">{{ url }}</h4>
+                <h4>在<a th:href="|https://book.douban.com/subject_search?search_text=${#strings.substringBefore(bookName, '.')}|" target="_blank">豆瓣</a>与在<a th:href="|https://www.amazon.cn/s/ref=nb_sb_noss_1?url=search-alias%3Ddigital-text&field-keywords=${#strings.substringBefore(bookName, '.')}|" target="_blank">亚马逊</a>搜索本书</h4>
+                <h4 th:text="|推送邮箱：${pushEmail}|">{{ email }}</h4>
+                <h4><a th:href="|/send/?file=${file}&name=${bookName}|" onclick="toggle()">推送</a></h4>
                 <div id="sending" style="visibility:hidden;"><h4>发送中…</h4><img src="/static/loading_circle.gif" width="32" height="32"></div>
                 <h4>服务器发送处理时间较长，请耐心等待！若推送邮箱为Kindle邮箱，请确认已将本站邮箱地址bookpush@foxmail.com添加至亚马逊账号设置的“<a href="https://www.amazon.cn/mn/dcw/myx.html#/home/settings" target="_blank">已认可的发件人电子邮箱列表</a>”</h4>
             </article>

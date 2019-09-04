@@ -16,6 +16,7 @@ site:
   name: 书推
   pushLimit: 5
   bookDir: your_book_dir
+  registerCode: register_code
   email:
     address: your_address
     password: your_password

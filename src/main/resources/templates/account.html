@@ -95,7 +95,7 @@
             <h4 th:text="|用户名：${user.userName}|">用户名</h4>
             <h4 th:text="|推送邮箱：${user.pushEmail}|">推送邮箱</h4>
             <h4 th:text="|剩余推送次数：${user.pushLimit}|">剩余推送次数</h4>
-            <h4 th:text="|最近一次签到：${user.checkinDate}|">最近一次签到日期</h4>
+            <h4 th:text="|最近一次签到：${#strings.replace(user.checkinDate, '.0', '')}|">最近一次签到日期</h4>
             <h4>若您的推送次数不够使用，请<a href="#" onclick="checkin()">现在签到</a>。</h4>
             <h4 th:text="|签到后推送次数将会变为${pushLimit}，每天可签到1次。|">签到说明</h4>
         </article>

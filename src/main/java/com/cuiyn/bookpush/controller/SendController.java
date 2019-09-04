@@ -88,7 +88,6 @@ public class SendController {
 
                 mimeMessage.setContent(multipart);
                 Transport.send(mimeMessage);
-
             } catch (AddressException e) {
                 e.printStackTrace();
             } catch (MessagingException e) {
@@ -97,7 +96,6 @@ public class SendController {
             userRepository.save(user);
             result = "推送成功！";
         }
-
 
         model.addAttribute("result", result);
         return "send.html";

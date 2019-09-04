@@ -9,6 +9,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface UserRepository extends CrudRepository<User, Integer> {
     List<User> findByUserName(String userName);
     void deleteByUserName(String userName);
+    List<User> findByPushEmail(String pushEmail);
 
     @Override
     Optional<User> findById(Integer integer);
